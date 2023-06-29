@@ -38,12 +38,11 @@ public static class DependencyContainer
     public static IServiceCollection AddCleanArchitectureServices(
         this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IDataBaseContext, UserContext>();
+
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IUserDetailRepository, UserDetailRepository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
-
-        services.AddScoped<IDataBaseContext, UserContext>();
 
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(CreateUserInteractor).Assembly));
         services.AddValidatorsFromAssembly(typeof(CreateUserValidator).Assembly);

@@ -9,7 +9,7 @@ Proyecto generado para la configuración automática de microservicios con net 6
     `npm install -g yo`
 * Descargar dependencias 
     `npm install`
-* Ejecutar dentro de generator-netcore6/
+* Ejecutar dentro de generator-netcore6
     `npm link`
 
 ## Instalar proyecto
