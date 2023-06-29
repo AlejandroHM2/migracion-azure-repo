@@ -1,0 +1,36 @@
+version: '3.4'
+
+services:
+  company.service.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - SEQ_URL=http://seq:5341
+      - DB_CONNECTION_STRING=Server=database;Port=5432;Database=user;User ID=postgres;password=ppl123
+      - REDIS_URL=redis:6379
+      - ASPNETCORE_URLS=http://+:5150
+    ports:
+      - 5150:5150
+  database:
+    ports:
+      - 5432:5432
+    environment:
+      - DATABASE_HOST=127.0.0.1
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=ppl123
+      - POSTGRES_DB=user
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "sh -c 'pg_isready -U postgres -d user'"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+  redis:  
+    ports:
+      - 6379:6379
+  seq:
+    ports:
+      - 8181:80
+      - 5341:5341
+    environment:
+      - ACCEPT_EULA=Y

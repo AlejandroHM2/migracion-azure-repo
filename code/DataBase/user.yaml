@@ -1,0 +1,54 @@
+databaseChangeLog:
+- changeSet:
+    id: 1683994935642-1
+    author: Hugo.Meraz (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: tbl_user_pkey
+            name: id
+            type: INTEGER
+        - column:
+            constraints:
+              nullable: false
+            name: name
+            type: CHAR(50)
+        - column:
+            constraints:
+              nullable: false
+            name: lastname
+            type: CHAR(50)
+        - column:
+            name: email
+            type: CHAR(50)
+        - column:
+            name: usertype
+            type: CHAR(50)
+        tableName: tbl_user
+- changeSet:
+    id: 1683994935642-2
+    author: Hugo.Meraz (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: tbl_user_detail_pkey
+            name: id
+            type: INTEGER
+        - column:
+            constraints:
+              nullable: false
+            name: userid
+            type: INTEGER
+        - column:
+            name: description
+            type: CHAR(50)
+        tableName: tbl_user_detail
+
